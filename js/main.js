@@ -19,9 +19,11 @@ window.addEventListener('load', () => {
 // PDF描画
 // -----------------------------------------------
 let PDF = null
-let displayPageNum = null
+let displayPageNum = 0
 let page_w = 595;
 let scale = 1;
+let totalPageNum = 0
+const displayPageElement = document.getElementById('page_number')
 const pdfjsTarget = document.getElementById('pdfjs_view');
 
 function loadPDF(url) {
@@ -39,6 +41,7 @@ function loadPDF(url) {
   loadingTask.promise.then((pdf) => {
     PDF = pdf
     displayPageNum = 1
+    totalPageNum = PDF.numPages
     getPdfPage()
   });
 }
@@ -78,6 +81,8 @@ function getPdfPage() {
 
     pdfjsTarget.appendChild(canvas);
     page.render(renderContext);
+
+    displayPageElement.innerHTML = '表示ページ：' + displayPageNum + '/' + totalPageNum
   });
 }
 
