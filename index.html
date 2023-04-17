@@ -17,13 +17,12 @@
         id="file">
     </div>
 
-    <div id="page_number">
-      表示ページ：
-    </div>
-
-    <div>
-      <button onclick="changePage(-1)">前ページ</button>
-      <button onclick="changePage(1)">次ページ</button>
+    <div class="page__container">
+      <button onclick="changePage(-1)" class="page__button">前ページ</button>
+      <div id="page_number">
+        表示ページ：
+      </div>
+      <button onclick="changePage(1)" class="page__button">次ページ</button>
     </div>
 
     <div>

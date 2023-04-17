@@ -1,11 +1,12 @@
 body {
   min-height: 100vh;
-  background-color: gray;
+  background-color: rgb(223, 223, 223);
 }
 
 .container {
   width: fit-content;
   margin: 0 auto;
+  padding-top: 20px;
 }
 
 #pdfjs_view {
@@ -23,4 +24,28 @@ body {
   position: absolute;
   border: 3px solid yellow;
   pointer-events: none;
+}
+
+.page__container {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.page__button {
+  background-color: rgb(83, 83, 255);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.page__button:hover {
+  background-color: rgb(175, 175, 255);
+}
+
+#page_number {
+  width: 150px;
+  margin: 0 20px;
 }
