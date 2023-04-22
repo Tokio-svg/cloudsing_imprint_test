@@ -6,33 +6,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/destyle.css">
   <link rel="stylesheet" href="./css/style.css">
-  <title>CloudSign押印座標確認</title>
+  <title>CloudSign署名座標確認</title>
 </head>
 <body>
   <div class="container">
-    <div>
-      <input
-        type="file"
-        name="pdf"
-        id="file">
-    </div>
 
-    <div class="page__container">
-      <button onclick="changePage(-1)" class="page__button">前ページ</button>
-      <div id="page_number">
-        表示ページ：
+    <div class="screen__container">
+      <div id="pdfjs_view" onclick="clickScreen(event)">
+        <div id="cursor"></div>
       </div>
-      <button onclick="changePage(1)" class="page__button">次ページ</button>
     </div>
 
-    <div>
-      <div id="position">x: ,y:</div>
-    </div>
+    <div class="controll-panel__container">
+      <div>
+        <h1 class="controll-panel__title">(1) PDFファイルを選択してください</h1>
+        <input
+          type="file"
+          name="pdf"
+          id="file"
+          accept=".pdf">
+      </div>
 
-    <div id="pdfjs_view" onclick="clickScreen(event)">
-      <div id="cursor"></div>
-    </div>
+      <div class="page__container">
+        <h1 class="controll-panel__title">(2) ページを選択してください</h1>
+        <div class="page__flex">
+          <button onclick="changePage(-1)" class="page__button">前ページ</button>
+          <div id="page_number">
+            表示ページ：
+          </div>
+          <button onclick="changePage(1)" class="page__button">次ページ</button>
+        </div>
+      </div>
 
+      <div>
+        <h1 class="controll-panel__title">(3) 署名の種類を選択してください</h1>
+        <div class="signature-mode__input">
+          <input type="radio" name="signature-mode" value="0" onchange="changeMode(0)" checked>押印
+        </div>
+        <div class="signature-mode__input">
+          <input type="radio" name="signature-mode" value="1" onchange="changeMode(1)">フリーテキスト
+        </div>
+      </div>
+
+      <div class="position__container">
+        <h1 class="controll-panel__title">(4) 表示された座標を確認してください</h1>
+        <div class="position__item">
+          <span class="position__header">X: </span>
+          <span id="position-x">0</span>
+        </div>
+        <div class="position__item">
+          <span class="position__header">Y: </span>
+          <span id="position-y">0</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="js/pdfjs/build/pdf.js"></script>

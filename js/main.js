@@ -87,19 +87,43 @@ function getPdfPage() {
 }
 
 // -----------------------------------------------
-// カーソル
+// 座標指定
 // -----------------------------------------------
-const position = document.getElementById('position')
+const positionX = document.getElementById('position-x')
+const positionY = document.getElementById('position-y')
 const cursor = document.getElementById('cursor')
 pdfjsTarget.onmousemove = onmousemove;
 
-clickScreen = function(e) {
+function clickScreen(e) {
   const clientRect = pdfjsTarget.getBoundingClientRect()
-  const cursorX = e.clientX - clientRect.left - 40
-  const cursorY = e.clientY - clientRect.top - 37.5
-  position.innerHTML = 'x:' + cursorX + ' ,' + ' y:' + cursorY;
+  const cursorWidthHalf = cursor.clientWidth/2
+  const cursorHeightHalf = cursor.clientHeight/2
+  const cursorX = e.clientX - clientRect.left - cursorWidthHalf
+  const cursorY = e.clientY - clientRect.top - cursorHeightHalf
+  positionX.innerHTML = parseInt(cursorX)
+  positionY.innerHTML = parseInt(cursorY)
 
-  cursor.style.left = e.offsetX - 40 + 'px'
-  cursor.style.top = e.offsetY - 37.5 + 'px'
+  cursor.style.left = parseInt(e.offsetX - cursorWidthHalf) + 'px'
+  cursor.style.top = parseInt(e.offsetY - cursorHeightHalf) + 'px'
+}
 
+// -----------------------------------------------
+// カーソル切り替え
+// -----------------------------------------------
+function changeMode(num) {
+  switch (num) {
+    case 0:
+      cursor.style.width = 80 + 'px'
+      cursor.style.height = 75 + 'px'
+      break
+    case 1:
+      cursor.style.width = 225 + 'px'
+      cursor.style.height = 40 + 'px'
+      break
+  }
+  // 位置を初期化
+  cursor.style.left = 0
+  cursor.style.top = 0
+  positionX.innerHTML = 0
+  positionY.innerHTML = 0
 }

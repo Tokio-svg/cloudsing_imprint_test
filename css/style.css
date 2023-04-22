@@ -1,18 +1,48 @@
+/* スクロールバーカスタマイズ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #394f6b;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #359298;
+  border-radius: 5px;
+  transition: 0.8s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #49adb4;
+  transition: 0.3s;
+}
+
 body {
   min-height: 100vh;
-  background-color: rgb(223, 223, 223);
+  background-color: #1c2128;
+  color: white;
+  line-height: 1.4em;
 }
 
 .container {
   width: fit-content;
   margin: 0 auto;
   padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.screen__container {
+  height: 95vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid #55dc43;
 }
 
 #pdfjs_view {
-  width: fit-content;
+  width: 595px;
   height: fit-content;
-  min-width: 595px;
   min-height: 842px;
   background-color: black;
   position: relative;
@@ -22,30 +52,60 @@ body {
   width: 80px;
   height: 75px;
   position: absolute;
-  border: 3px solid yellow;
+  border: 3px solid red;
   pointer-events: none;
 }
 
-.page__container {
+.controll-panel__container {
+  padding: 10px 20px;
+  width: 360px;
+}
+
+.controll-panel__title {
+  font-weight: bold;
+  color: #4388dc;
+  padding: 30px 0 15px;
+}
+
+.page__flex {
   display: flex;
   align-items: center;
-  padding: 10px 0;
 }
 
 .page__button {
-  background-color: rgb(83, 83, 255);
+  background-color: #4388dc;
   color: white;
-  padding: 5px 15px;
+  padding: 2px 15px;
   border-radius: 5px;
   font-size: 12px;
   font-weight: bold;
 }
 
 .page__button:hover {
-  background-color: rgb(175, 175, 255);
+  background-color: #80abe0;
 }
 
 #page_number {
-  width: 150px;
-  margin: 0 20px;
+  width: 140px;
+  margin: 0 10px;
+}
+
+.signature-mode__input {
+  padding: 5px 0;
+  display: flex;
+}
+
+.signature-mode__input input {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.position__item {
+  font-size: 24px;
+  padding: 10px 0;
+}
+
+.position__header {
+  color: #4388dc;
 }
